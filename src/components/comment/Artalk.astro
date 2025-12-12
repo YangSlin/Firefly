@@ -1,0 +1,91 @@
+---
+import { commentConfig, siteConfig } from "@/config";
+
+interface Props {
+	path: string;
+}
+
+const config = {
+	...commentConfig.artalk,
+	el: "#artalk",
+	site: siteConfig.title,
+	pageKey: Astro.props.path,
+	dark: "html.dark",
+	pageTitle: "",
+	...(commentConfig.artalk?.visitorCount ? { pageview: true } : {}),
+};
+---
+<!-- Artalk -->
+<div class="relative w-full">
+    <!-- 挂载点 -->
+    <div id="artalk"></div>
+
+    <!-- 引入 Artalk 样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/artalk/dist/Artalk.css"/>
+
+    <!-- 脚本逻辑 -->
+    <script type="module" is:inline define:vars={{config}}>
+        import Artalk from 'https://unpkg.com/artalk/dist/Artalk.mjs';
+
+        let artalkInstance = null;
+
+        function initArtalk() {
+            const artalkEl = document.getElementById("artalk");
+            if (!artalkEl) return;
+
+            // 如果已有实例，先销毁
+            if (artalkInstance) {
+                artalkInstance.destroy();
+                artalkInstance = null;
+            }
+
+            // 更新配置中的 path
+            const currentPath = window.location.pathname;
+            const newConfig = {
+                ...config,
+                pageKey: currentPath,
+                pageTitle: document.title
+            };
+
+            // 初始化 Artalk
+            artalkInstance = Artalk.init(newConfig);
+
+            // 更新主题
+            updateTheme();
+        }
+
+        // 深色模式
+        function updateTheme() {
+            if (!artalkInstance) return;
+            const isDark = document.documentElement.classList.contains('dark');
+            artalkInstance.setDarkMode(isDark);
+        }
+
+        // 初始加载
+        initArtalk();
+
+        // 监听主题变化
+        const observer = new MutationObserver((_mutations) => {
+            updateTheme();
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class'],
+        });
+
+        // Swup 页面切换后重新初始化
+        if (window.swup && window.swup.hooks) {
+            window.swup.hooks.on("content:replace", initArtalk);
+        } else {
+            document.addEventListener("swup:enable", function () {
+                if (window.swup && window.swup.hooks) {
+                    window.swup.hooks.on("content:replace", initArtalk);
+                }
+            });
+        }
+
+        // 自定义事件监听
+        document.addEventListener("firefly:page:loaded", initArtalk);
+    </script>
+</div>
