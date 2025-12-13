@@ -1,6 +1,6 @@
 # 关于我 / About Me
 
-你好！我是 **夏叶** ，一个在数字世界中默默无闻的一片叶子。
+你好！我是 **Becorer** ，一个在数字世界中追寻核心与本真的技术探索者。
 
 ## 🛠️ 关于本站
 
@@ -19,17 +19,17 @@
 
 **⭐Fuwari开源地址：[https://github.com/saicaca/fuwari](https://github.com/saicaca/fuwari)**
 
-::github{repo="CuteLeaf/Firefly"}
+<!-- ::github{repo="CuteLeaf/Firefly"}
 
-::github{repo="saicaca/fuwari"}
+::github{repo="saicaca/fuwari"} -->
 
 
 ## 📫 联系方式
 
 如果你想和我交流技术问题，分享有趣的想法，或者只是想打个招呼，欢迎通过以下方式联系我：
 
-- 💻 **GitHub**: [CuteLeaf](https://github.com/CuteLeaf)
-- ✉️ **Email**: [xiaye@msn.com](mailto:xiaye@msn.com)
+- 💻 **GitHub**: [Becorer](https://github.com/Becorer)
+- ✉️ **Email**: [ysilin@foxmail.com](mailto:ysilin@foxmail.com)
 
 ---
 
