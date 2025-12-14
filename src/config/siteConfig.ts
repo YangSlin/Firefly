@@ -68,9 +68,9 @@ export const siteConfig: SiteConfig = {
   // 页面开关配置 - 控制特定页面的访问权限，设为false会返回404
   // bangumi的数据为编译时获取的，所以不是实时数据，请配置bangumi.userId
   pages: {
-    sponsor: true, // 赞助页面开关
+    sponsor: false, // 赞助页面开关
     guestbook: true, // 留言板页面开关，需要配置评论系统
-    bangumi: true, // 番组计划页面开关，含追番和游戏，dev调试时只获取一页数据，build才会获取全部数据
+    bangumi: false, // 番组计划页面开关，含追番和游戏，dev调试时只获取一页数据，build才会获取全部数据
   },
 
   // 文章列表布局配置
@@ -134,8 +134,8 @@ export const siteConfig: SiteConfig = {
       },
       credit: {
         enable: {
-          desktop: true, // 桌面端显示横幅图片来源文本
-          mobile: true, // 移动端显示横幅图片来源文本
+          desktop: false, // 桌面端显示横幅图片来源文本
+          mobile: false, // 移动端显示横幅图片来源文本
         },
         text: {
           desktop: "Pixiv - 晚晚喵", // 桌面端要显示的来源文本
